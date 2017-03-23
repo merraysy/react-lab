@@ -50,6 +50,9 @@ export function loadTodos() {
                 type: 'TODOS_LOAD_ERROR',
                 payload: { error }
             });
+            setTimeout(() => {
+                dispatch(hideError());
+            }, 2000);
         });
     };
 }

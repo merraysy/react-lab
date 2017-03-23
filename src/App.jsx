@@ -26,9 +26,6 @@ export class App extends Component {
 
     loadTodos() {
         this.props.loadTodos();
-        setTimeout(() => {
-            this.props.hideError();
-        }, 2000);
     }
 
     addTodo(title) {
