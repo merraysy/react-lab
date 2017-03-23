@@ -1,19 +1,17 @@
 import React from 'react';
-import ReactTestUtils from 'react-addons-test-utils';
+import { shallow, render } from 'enzyme';
 
 // components
 import Todo from '../Todo';
 
-test('<Todo /> should render successfully', () => {
-    const renderer = ReactTestUtils.createRenderer();
-    renderer.render(<Todo />);
-    const output = renderer.getRenderOutput();
-    expect(output.type).toBe('li');
-});
+describe(<Todo />, () => {
+    test('should render successfully', () => {
+        const wrapper = shallow(<Todo />);
+        expect(wrapper.type()).toBe('li');
+    });
 
-test('<Todo checked={true} /> should have a class checked', () => {
-    const renderer = ReactTestUtils.createRenderer();
-    renderer.render(<Todo checked={true} />);
-    const output = renderer.getRenderOutput();
-    expect(output.props.className).toBe('todo checked');
+    test('should have a class checked when checked prop is passed `true`', () => {
+        const wrapper = shallow(<Todo checked={true} />);
+        expect(wrapper.props().className).toBe('todo checked');
+    });
 });

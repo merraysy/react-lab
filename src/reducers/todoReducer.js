@@ -2,7 +2,7 @@ import _ from 'lodash';
 
 export default function todoReducer(state = { todos: [], error: null, loading: false }, action) {
     const { type, payload } = action;
-    const todos = [...state.todos];
+    const todos = state.todos ? [...state.todos] : [];
     switch (type) {
         case 'TODOS_LOAD_REQ':
             return {...state, loading: true};
