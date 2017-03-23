@@ -11,40 +11,19 @@ import Todos from './containers/Todos/Todos';
 import './App.sass';
 
 export class App extends Component {
-    constructor(props) {
-        super(props);
-
-        // bind `this`
-        this.addTodo = this.addTodo.bind(this);
-        this.toggleTodo = this.toggleTodo.bind(this);
-        this.removeTodo = this.removeTodo.bind(this);
-    }
-
     componentWillMount() {
-        this.loadTodos();
-    }
-
-    loadTodos() {
         this.props.loadTodos();
     }
 
-    addTodo(title) {
-        this.props.addTodo(title);
-    }
-
-    toggleTodo(id) {
-        this.props.toggleTodo(id);
-    }
-
-    removeTodo(id) {
-        this.props.removeTodo(id);
+    componentWillUnmount() {
+        this.props.test();
     }
 
     render() {
         return <Todos
-            addTodo={this.addTodo}
-            toggleTodo={this.toggleTodo}
-            removeTodo={this.removeTodo}
+            addTodo={this.props.addTodo}
+            toggleTodo={this.props.toggleTodo}
+            removeTodo={this.props.removeTodo}
             todos={this.props.todos}
             loading={this.props.loading}
             error={this.props.error}
