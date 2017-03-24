@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "start": "webpack-dev-server --port 3030 --hot --inline --progress",
-    "test": "jest"
+    "test": "jest --watchAll"
   },
   "dependencies": {
     "lodash": "^4.17.4",

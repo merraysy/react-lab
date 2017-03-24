@@ -8,6 +8,15 @@ describe('todoReducer', () => {
         };
     });
 
+    test('should return the initial state', () => {
+        const newState = todoReducer(undefined, {});
+        expect(newState).toEqual({
+            todos: [],
+            error: null,
+            loading: false
+        });
+    });
+
     test('should return a new state', () => {
         const newState = todoReducer(state, { type: 'TEST', payload: null });
         expect(newState).not.toBe(state);
