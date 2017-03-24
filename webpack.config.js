@@ -33,7 +33,7 @@ module.exports = {
                 test: /\.(css|sass|scss)$/,
                 use: [
                     'style-loader',
-                    'css-loader',
+                    'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
                     {
                         loader: 'postcss-loader',
                         options: {

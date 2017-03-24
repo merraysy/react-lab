@@ -1,11 +1,13 @@
 import React from 'react';
 
 // styles
-import './Todo.sass';
+import styles from './Todo.sass';
+
+console.log(styles);
 
 export default (props) => {
     const { id, title, checked, toggleTodo, removeTodo } = props;
-    const checkedClass = checked ? ' checked' : '';
+    const checkedClass = checked ? ` ${styles.checked}` : '';
     const todoClickHandler = (e) => {
         e.preventDefault();
         toggleTodo(id);
@@ -16,9 +18,9 @@ export default (props) => {
         removeTodo(id);
     };
     return (
-        <li className={`todo${checkedClass}`} onClick={todoClickHandler}>
-            <span className="title">{title}</span>
-            <span className="remove" onClick={removeClickHandler}>&times;</span>
+        <li className={`${styles.todo}${checkedClass}`} onClick={todoClickHandler}>
+            <span className={styles.title}>{title}</span>
+            <span className={styles.remove} onClick={removeClickHandler}>&times;</span>
         </li>
     );
 };
