@@ -1,4 +1,8 @@
 import { expect } from 'chai';
+import configureMockStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
+
+const mockStore = configureMockStore([thunk]);
 
 // actions
 import * as todoActions from '../todoActions';
@@ -19,6 +23,18 @@ describe('Actions', () => {
                 expect(action.payload.title).to.equal(title);
                 expect(action.payload.checked).to.be.false;
             })
+        });
+
+        describe('loadTodos', () => {
+            it('should call async actions', () => {
+                const store = mockStore({ todos: [] });
+                store.dispatch(todoActions.loadTodos());
+                setTimeout(() => {
+                    const actions = store.getActions();
+                    expect(actions).to.have.length.of(2);
+                    expect(actions).to.include({ type: 'TODOS_LOAD_REQ', payload: null });
+                }, 3000);
+            });
         });
     });
 });
