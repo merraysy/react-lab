@@ -17,8 +17,8 @@ describe('todoReducer', () => {
         });
     });
 
-    test('should return a new state', () => {
-        const newState = todoReducer(state, { type: 'TEST', payload: null });
+    test('should not mutate the state', () => {
+        const newState = todoReducer(state, {});
         expect(newState).not.toBe(state);
     });
 
