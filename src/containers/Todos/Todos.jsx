@@ -21,7 +21,8 @@ class Todos extends Component {
 
     submitForm(e) {
         e.preventDefault();
-        if (this._input) {
+        if (this._input && this._input.value) {
+            console.log(this._input);
             this.props.addTodo(this._input.value);
             this._input.value = '';
         }
