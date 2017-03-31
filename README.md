@@ -1,2 +1,2 @@
-# react-lab
-Here I do my react libraries related experiments to pick my tools.
+# React Lab
+Here I do my react library's related experiments to pick my tools.
