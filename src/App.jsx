@@ -7,8 +7,35 @@ import { todoActions } from './actions';
 // containers
 import Todos from './containers/Todos';
 
-// styles
-import './App.sass';
+// style
+// problem here:
+// I can't define `global` styles e.g. reset styles :
+// ==sass
+// body
+//   font-size: 14px
+//   font-family: 'Helvetica', Arial, sans-serif
+// 
+//   *
+//     margin: 0
+//     padding: 0
+//     box-sizing: border-box
+// ==
+// so I'll have to do it with javascript or
+// include a `global.css` file in the `index.html`
+// head or something.
+const style = {};
+const body = document.querySelector('body');
+const allElements = body.querySelectorAll('*');
+body.style.fontSize = 14;
+body.style.fontFamily = `'Helvetica', Arial, sans-serif`;
+// what is this ??
+// not even working, it doesn't select the DOM elements
+// created by react even if I put it in `componentDidMount`
+allElements.forEach((element) => {
+    element.style.margin = 0;
+    element.style.padding = 0;
+    element.style.boxSizing = 'border-box';
+});
 
 export class App extends Component {
     constructor(props) {
