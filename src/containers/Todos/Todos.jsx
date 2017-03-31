@@ -4,8 +4,43 @@ import React, { Component } from 'react';
 import Todo from '../../components/Todo';
 import { Input } from '../../components/Forms';
 
-// styles
-import './Todos.sass';
+// style
+const containerStyle = {
+    maxWidth: 480,
+    margin: '0 auto',
+    padding: '2em .5em'
+};
+const headingStyle = {
+    paddingBottom: '.5em'
+};
+const todosStyle = {
+    marginTop: '2em'
+};
+const todosListStyle = {
+    listStyle: 'none'
+};
+const infosStyle = {
+    textAlign: 'center',
+    marginBottom: '.5em'
+};
+// notice how much styles we're defining here
+// but we still can move them to their own file
+// unless we need to tweak some styles based on
+// some of the component's states or props
+const errorStyle = {
+    color: '#D55'
+};
+const loadingStyle = {
+    // how can I define an animation's `@keyframes` e.g. :
+    // ==sass
+    // @keyframes spin
+    //   from
+    //     opacity: 1
+    //   to
+    //     opacity: 0
+    // ==
+    animation: 'spin 250ms infinite alternate ease-in-out'
+};
 
 class Todos extends Component {
     constructor(props) {
@@ -45,9 +80,9 @@ class Todos extends Component {
     render() {
         const { todos, error, loading } = this.props;
         return (
-            <div className="container">
+            <div style={containerStyle}>
                 <form onSubmit={this.submitForm}>
-                    <h1 className="heading">Simple Todo App</h1>
+                    <h1 style={headingStyle}>Simple Todo App</h1>
                     <Input
                         name="todo"
                         placeholder="Add a Todo"
@@ -55,21 +90,21 @@ class Todos extends Component {
                     />
                 </form>
 
-                <div className="todos">
-                    <h1 className="heading">Todos</h1>
-                    <div className="infos">
+                <div style={todosStyle}>
+                    <h1 style={headingStyle}>Todos</h1>
+                    <div style={infosStyle}>
                         {
                             error
-                                ? <p className="error">{error.message}</p>
+                                ? <p style={errorStyle}>{error.message}</p>
                                 : ''
                         }
                         {
                             loading
-                                ? <p className="loading">Loading...</p>
+                                ? <p style={loadingStyle}>Loading...</p>
                                 : ''
                         }
                     </div>
-                    <ul className="todos-list">
+                    <ul style={todosListStyle}>
                         {this.mapTodos(todos)}
                     </ul>
                 </div>
