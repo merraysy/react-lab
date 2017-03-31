@@ -1,8 +1,5 @@
 import React from 'react';
 
-// styles
-import './Todo.sass';
-
 export default (props) => {
     const { id, title, checked, toggleTodo, removeTodo } = props;
     const checkedClass = checked ? ' checked' : '';

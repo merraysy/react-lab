@@ -8,7 +8,7 @@ import { todoActions } from './actions';
 import Todos from './containers/Todos';
 
 // styles
-import './App.sass';
+import './style/main.sass';
 
 export class App extends Component {
     constructor(props) {

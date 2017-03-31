@@ -4,9 +4,6 @@ import React, { Component } from 'react';
 import Todo from '../../components/Todo';
 import { Input } from '../../components/Forms';
 
-// styles
-import './Todos.sass';
-
 class Todos extends Component {
     constructor(props) {
         super(props);
