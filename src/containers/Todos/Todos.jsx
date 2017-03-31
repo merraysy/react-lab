@@ -1,45 +1,45 @@
 import React, { Component } from 'react';
+import Radium from 'radium';
 
 // components
 import Todo from '../../components/Todo';
 import { Input } from '../../components/Forms';
 
-// style
-const containerStyle = {
-    maxWidth: 480,
-    margin: '0 auto',
-    padding: '2em .5em'
-};
-const headingStyle = {
-    paddingBottom: '.5em'
-};
-const todosStyle = {
-    marginTop: '2em'
-};
-const todosListStyle = {
-    listStyle: 'none'
-};
-const infosStyle = {
-    textAlign: 'center',
-    marginBottom: '.5em'
-};
-// notice how much styles we're defining here
-// but we still can move them to their own file
-// unless we need to tweak some styles based on
-// some of the component's states or props
-const errorStyle = {
-    color: '#D55'
-};
-const loadingStyle = {
-    // how can I define an animation's `@keyframes` e.g. :
-    // ==sass
-    // @keyframes spin
-    //   from
-    //     opacity: 1
-    //   to
-    //     opacity: 0
-    // ==
-    animation: 'spin 250ms infinite alternate ease-in-out'
+// styles
+const spinKeyframes = Radium.keyframes({
+    '0%': {
+        opacity: 1
+    },
+    '100%': {
+        opacity: 0
+    }
+}, 'spin');
+const styles = {
+    container: {
+        maxWidth: 480,
+        margin: '0 auto',
+        padding: '2em .5em'
+    },
+    heading: {
+        paddingBottom: '.5em'
+    },
+    todos: {
+        marginTop: '2em'
+    },
+    todosList: {
+        listStyle: 'none'
+    },
+    infos: {
+        textAlign: 'center',
+        marginBottom: '.5em'
+    },
+    error: {
+        color: '#D55'
+    },
+    loading: {
+        animation: 'x 250ms infinite alternate ease-in-out',
+        animationName: spinKeyframes
+    }
 };
 
 class Todos extends Component {
@@ -80,9 +80,9 @@ class Todos extends Component {
     render() {
         const { todos, error, loading } = this.props;
         return (
-            <div style={containerStyle}>
+            <div style={styles.container}>
                 <form onSubmit={this.submitForm}>
-                    <h1 style={headingStyle}>Simple Todo App</h1>
+                    <h1 style={styles.heading}>Simple Todo App</h1>
                     <Input
                         name="todo"
                         placeholder="Add a Todo"
@@ -90,21 +90,21 @@ class Todos extends Component {
                     />
                 </form>
 
-                <div style={todosStyle}>
-                    <h1 style={headingStyle}>Todos</h1>
-                    <div style={infosStyle}>
+                <div style={styles.todos}>
+                    <h1 style={styles.heading}>Todos</h1>
+                    <div style={styles.infos}>
                         {
                             error
-                                ? <p style={errorStyle}>{error.message}</p>
+                                ? <p style={styles.error}>{error.message}</p>
                                 : ''
                         }
                         {
                             loading
-                                ? <p style={loadingStyle}>Loading...</p>
+                                ? <p style={styles.loading}>Loading...</p>
                                 : ''
                         }
                     </div>
-                    <ul style={todosListStyle}>
+                    <ul style={styles.todosList}>
                         {this.mapTodos(todos)}
                     </ul>
                 </div>
@@ -113,4 +113,4 @@ class Todos extends Component {
     }
 }
 
-export default Todos;
+export default Radium(Todos);

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { StyleRoot } from 'radium';
 
 // actions
 import { todoActions } from './actions';
@@ -8,7 +9,7 @@ import { todoActions } from './actions';
 import Todos from './containers/Todos';
 
 // style
-// problem here:
+// same problem here:
 // I can't define `global` styles e.g. reset styles :
 // ==sass
 // body
@@ -68,14 +69,18 @@ export class App extends Component {
     }
 
     render() {
-        return <Todos
-            addTodo={this.addTodo}
-            toggleTodo={this.toggleTodo}
-            removeTodo={this.removeTodo}
-            todos={this.props.todos}
-            loading={this.props.loading}
-            error={this.props.error}
-        />
+        return (
+            <StyleRoot>
+                <Todos
+                    addTodo={this.addTodo}
+                    toggleTodo={this.toggleTodo}
+                    removeTodo={this.removeTodo}
+                    todos={this.props.todos}
+                    loading={this.props.loading}
+                    error={this.props.error}
+                />
+            </StyleRoot>
+        );
     }
 }
 

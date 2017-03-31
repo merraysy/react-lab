@@ -1,14 +1,19 @@
 import React from 'react';
+import Radium from 'radium';
 
 // style
 const style = {
     fontSize: '1.5em',
     padding: '1rem',
     width: '100%',
-    border: '1px solid #EEE'
+    border: '1px solid #EEE',
+    ':focus': {
+        outline: 'none',
+        boxShadow: '0 0 1rem rgba(0, 0, 0, .25)'
+    }
 };
 
-export default (props) => {
+const Input = (props) => {
     const { name, placeholder, refHandler } = props;
     return (
         <input
@@ -20,3 +25,5 @@ export default (props) => {
         />
     );
 };
+
+export default Radium(Input);
