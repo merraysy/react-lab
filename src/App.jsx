@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 // actions
 import { todoActions } from './actions';
 
-// components
-import Todos from './containers/Todos/Todos';
+// containers
+import Todos from './containers/Todos';
 
 // styles
 import './App.sass';

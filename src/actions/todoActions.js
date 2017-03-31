@@ -36,7 +36,7 @@ export function loadTodos() {
                     resolve(_todos);
                 } else {
                     reject({
-                        message: 'Todos not found.'
+                        message: 'Todos not fetched.'
                     });
                 }
             }, 2000);
