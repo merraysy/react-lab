@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server --port 3030 --hot --inline --progress"
+    "start": "webpack-dev-server --port 3030 --hot --inline --progress --colors -d"
   },
   "dependencies": {
     "lodash": "^4.17.4",
