@@ -11,7 +11,10 @@ module.exports = {
         publicPath: '/'
     },
     resolve: {
-        extensions: ['.js', '.json', '.jsx', '.css', '.sass', '.scss']
+        extensions: ['.js', '.json', '.jsx', '.css', '.sass', '.scss'],
+        alias: {
+            'style': path.join(__dirname, 'src/style')
+        }
     },
     module: {
         rules: [
@@ -32,7 +35,7 @@ module.exports = {
                 test: /\.(css|sass|scss)$/,
                 use: [
                     'style-loader',
-                    'css-loader',
+                    'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
                     {
                         loader: 'postcss-loader',
                         options: {
@@ -41,7 +44,14 @@ module.exports = {
                             ]
                         }
                     },
-                    'sass-loader'
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            includePaths: [
+                                require('bourbon').includePaths
+                            ]
+                        }
+                    }
                 ]
             },
         ]

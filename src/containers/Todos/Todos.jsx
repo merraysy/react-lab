@@ -5,7 +5,7 @@ import Todo from '../../components/Todo';
 import { Input } from '../../components/Forms';
 
 // styles
-import './Todos.sass';
+import styles from './Todos.sass';
 
 class Todos extends Component {
     constructor(props) {
@@ -44,9 +44,9 @@ class Todos extends Component {
     render() {
         const { todos, error, loading } = this.props;
         return (
-            <div className="container">
+            <div className={styles.container}>
                 <form onSubmit={this.submitForm}>
-                    <h1 className="heading">Simple Todo App</h1>
+                    <h1 className={styles.heading}>Simple Todo App</h1>
                     <Input
                         name="todo"
                         placeholder="Add a Todo"
@@ -54,21 +54,21 @@ class Todos extends Component {
                     />
                 </form>
 
-                <div className="todos">
-                    <h1 className="heading">Todos</h1>
-                    <div className="infos">
+                <div className={styles.todos}>
+                    <h1 className={styles.heading}>Todos</h1>
+                    <div className={styles.infos}>
                         {
                             error
-                                ? <p className="error">{error.message}</p>
+                                ? <p className={styles.error}>{error.message}</p>
                                 : ''
                         }
                         {
                             loading
-                                ? <p className="loading">Loading...</p>
+                                ? <p className={styles.loading}>Loading...</p>
                                 : ''
                         }
                     </div>
-                    <ul className="todos-list">
+                    <ul className={styles.todosList}>
                         {this.mapTodos(todos)}
                     </ul>
                 </div>

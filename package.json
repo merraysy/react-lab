@@ -4,9 +4,10 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server --port 3030 --hot --inline --progress --colors -d"
+    "start": "webpack-dev-server --port 3030 --hot --inline --progress --colors"
   },
   "dependencies": {
+    "bourbon": "^4.3.4",
     "lodash": "^4.17.4",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
